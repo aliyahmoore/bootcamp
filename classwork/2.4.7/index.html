@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+    <style>
+        .move {
+            height: 50px;
+            width: 15%;
+            border: solid 1px black;
+            background-color: gray;
+            margin: 5px;
+            position: relative;
+            color: white;
+        }
+        #container {
+            display: flex;
+        }
+    </style>
+</head>
+
+<body>
+    <div id="container">
+        <div class="move" id="div1">1</div>
+        <div class="move" id="div2">2</div>
+        <div class="move" id="div3">3</div>
+        <div class="move" id="div4">4</div>
+        <div class="move" id="div5">5</div>
+        <div class="move" id="div6">6</div>
+        <div class="move" id="div7">7</div>
+        <div class="move" id="div8">8</div>
+    </div>
+
+    <script>
+        
+        var HEIGHT = $(window).height();
+        var totalDuration = 5300; 
+        var downDuration = 2500; 
+        var upDuration = 2000; 
+        var currentDivIndex = 0;
+        var divs = $('.move');
+
+        function animateDiv(div) {
+            // Animate down
+            $(div).animate({ top: HEIGHT - 70 }, downDuration, function() {
+                // Animate up after down animation completes
+                $(div).animate({ top: 0 }, upDuration, function() {
+                    // Move to the next div
+                    currentDivIndex++;
+                    if (currentDivIndex < divs.length) {
+                        setTimeout(function() {
+                            animateDiv(divs[currentDivIndex]);
+                        }, 100); // Short delay before starting next
+                    } else {
+                        currentDivIndex = 0; // Reset for the next full wave cycle
+                        setTimeout(animateWave, 100); // Delay before restarting the wave
+                    }
+                });
+            });
+        }
+
+        function animateWave() {
+            animateDiv(divs[currentDivIndex]); // Start with the first div going down
+        }
+
+        animateWave(); // Start the wave animation
+    </script>
+</body>
+</html>

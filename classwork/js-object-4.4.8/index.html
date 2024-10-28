@@ -1,0 +1,112 @@
+<!DOCTYPE html>
+<html>
+	<head>
+	<script src = "https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"> </script>
+    <link rel="stylesheet" href="style.css">
+    <style>
+
+        #contact-reveal {
+            margin-top: 20px;
+            border: 1px solid #ccc;
+            padding: 15px;
+            border-radius: 5px;
+            background-color: #f9f9f9;
+        }
+        
+    </style>
+	</head>
+
+	<body>
+	    <div id = container>
+    	    <h1>My Phonebook</h1>
+    	    <div id = button-container>
+        	    <button id = add>Add Contact</button>
+        	    <button id = retrieve>Retrieve Contact</button>
+        	    <button id = print>Print Contacts</button>
+    	    </div>
+    	    <div id = contact-reveal></div>
+	    </div>
+	    <script>
+	        	        //copy your code from the previous exercise
+	        
+	        var contactDiv = "<div class = 'contact-card'><div class = image></div><div class = text-container>"
+	        var contactDivClose = "</div></div>"
+	        if(localStorage.contactList){
+	            var contactList = JSON.parse(localStorage.contactList);
+	        }else{
+	           var contactList = [];
+	        }
+	        
+	        
+            $("#add").click(function(){
+	            var first = prompt("First Name:");
+	            var last = prompt("Last Name:");
+	            addContact(first, last);
+	         });
+	        
+	        function addContact(first, last){
+	            //copy your code from the previous exercise
+	            var num = prompt("Number:");
+	            var contact = {
+	                firstName: first,
+	                lastName: last,
+	                number: num,
+	            };
+	            contactList.push(contact);
+	            localStorage.contactList = JSON.stringify(contactList);
+
+	        }
+	        
+	        function contactExists(first, last){
+	            //copy your code from the previous exercise
+	            contactList = JSON.parse(localStorage.contactList);
+	            for(var i = 0; i <contactList.length; i++){
+	                if(contactList[i].firstName == first && contactList[i].lastName == last){
+	                    return true;
+	                }
+	            }
+	            return false;
+
+	        }
+	        
+	       $("#retrieve").click(function(){
+                var first = prompt("First Name:");
+                var last = prompt("Last Name:");
+                if(contactExists(first, last)) {
+                    retrieveContact(first, last);
+                }else{
+                    var yesNo = prompt("That name is not in your contact list, would you like to add them?")
+                    if(yesNo.toLowerCase() == "yes"){
+                        addContact(first, last);
+                    }else{
+                        alert("okay.have a nice day!");
+                    }
+                }
+	        });
+	        
+	        function retrieveContact(first, last){
+	            //copy your code from the previous exercise
+	            contactList = JSON.parse(localStorage.contactList);
+	            for(var i = 0; i <contactList.length; i++){
+	                if(contactList[i].firstName == first && contactList[i].lastName == last){
+	                    $("#contact-reveal").append(contactDiv + contactList[i].firstName + "<br>" + contactList[i].lastName + "<br>" + contactList[i].number + contactDivClose);
+
+	                }
+	            }
+	        }
+	        
+	        $("#print").click(function(){
+	            printContacts();
+	        });
+	        
+	        function printContacts(){
+	            contactList = JSON.parse(localStorage.contactList);
+	            console.log(contactList)
+	            for( var i = 0; i < contactList.length; i++){
+	                $("#contact-reveal").append(contactDiv + contactList[i].firstName + "<br>" + contactList[i].lastName + "<br>" + contactList[i].number + contactDivClose); 
+	            }
+	        }
+	        
+	    </script>
+	</body>
+</html>
