@@ -8,7 +8,7 @@ num = 52
 
 if num > 70
     puts "Num is greater than 70"
-elseif num < 30
+elsif num < 30
     puts "num is less than"
 else 
     puts "num is between 30 and 70"
@@ -43,3 +43,6 @@ test_2 = 5==5 || 1==2
 # test_3 = should be false
 test_3 = !(5==5)
 
+for num in 1..20 
+    puts num
+end
