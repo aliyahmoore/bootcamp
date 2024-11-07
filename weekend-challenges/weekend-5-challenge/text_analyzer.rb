@@ -1,4 +1,5 @@
-# Read text from a file
+# Read text from a file 
+#method 
 def read_text_from_file(filename)
     File.read(filename)
 end
@@ -15,12 +16,15 @@ end
 =end
 
 # logic for text_analyzer requirments go here:
-  # Count the number of words in the text
+# Count the number of words in the text. \s matches any character that could be considered a "space". 
+# + means one or more, The size method then counts the number of words in the resulting array.
   def count_words(text)
     text.split(/\s+/).size
   end
   
+
   # Count the number of characters in the text
+  #The length method returns the number of characters (including spaces, punctuation, and special characters) in the string.
   def count_characters(text)
     text.length
   end

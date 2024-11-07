@@ -49,3 +49,19 @@ for word in words
   puts "- After Replacement: #{modified_word}"
 end
 
+--list a variable in the words variable
+for word in words
+
+    is_palindrome = (word == word.reverse)
+
+
+
+
+
+
+  puts "Word: #{word}"
+  puts "- Palindrome: #{is_palindrome} ? 'yes' : 'no'"
+  if is_panidrome 
+    puts "yes"
+  else
+end
