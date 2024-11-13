@@ -1,8 +1,8 @@
 class CategoriesController < ApplicationController
-  before_action :authenticate_user!
-  before_action :set_category, only: [ :show, :edit, :update, :destroy ]
+  http_basic_authenticate_with name: "dhh", password: "secret", except: [:index, :show]
   def index
     @categories = Category.all
+    @categories = Category.includes(:articles).all
   end
 
   def show
@@ -38,7 +38,9 @@ class CategoriesController < ApplicationController
   end
 
   def destroy
+    @category = Category.find(params[:id])
     @category.destroy
+
     redirect_to categories_path, notice: "Category was successfully deleted."  # Redirect to the categories index page after deletion
   end
 

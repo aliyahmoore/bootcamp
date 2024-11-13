@@ -1,0 +1,10 @@
+<h1>Categories</h1>
+
+<ul>
+  <% @categories.each do |category| %>
+    <li>
+      <%= category.name %> 
+      <span>(<%= category.articles.count %> articles)</span>
+    </li>
+  <% end %>
+</ul>
