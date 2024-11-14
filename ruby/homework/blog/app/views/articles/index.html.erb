@@ -6,24 +6,11 @@
   <% @articles.each do |article| %>
     <li>
     <a href="/articles/<%= article.id %>">
-      <%= article.title %>
-    </li>
-  <% end %>
-</ul>
-
-<h1>Categories</h1>
-
-<% if user_signed_in? %>
-  <%= link_to 'New Category', new_category_path %>
-<% end %>
-
-<ul>
-  <% @categories.each do |category| %>
-    <li>
-      <strong><%= category.name %></strong><br>
-      <em><%= category.description %></em> <!-- Display description in italics -->
+      <%= article.title %> 
     </li>
   <% end %>
 </ul>
 
 <%= link_to "New Article", new_article_path %>
+
+

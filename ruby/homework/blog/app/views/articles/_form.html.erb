@@ -15,16 +15,8 @@
     <% end %>
   </div>
 
-  <!-- Category selector -->
-  <div>
-    <%= form.label :category_id %><br>
-    <%= form.collection_select :category_id, Category.all, :id, :name, prompt: "Select a Category" %>
-    <% article.errors.full_messages_for(:category).each do |message| %>
-      <div><%= message %></div>
-    <% end %>
-  </div>
-
   <div>
     <%= form.submit %>
   </div>
 <% end %>
+
