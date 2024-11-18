@@ -1,0 +1,13 @@
+<%= form_with model: @category do |form| %>
+  <div>
+    <%= form.label :name %>
+    <%= form.text_field :name, value: @category.name %>
+  </div>
+  <div>
+    <%= form.label :description %>
+    <%= form.text_area :description, value: @category.description %>
+  </div>
+  <%= form.submit %>
+<% end %>
+
+<%= link_to 'Back', category_path(@category) %>
