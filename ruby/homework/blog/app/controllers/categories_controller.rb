@@ -1,13 +1,12 @@
 class CategoriesController < ApplicationController
   http_basic_authenticate_with name: "dhh", password: "secret", except: [:index, :show]
-end
 
 def index 
   @categories = Category.all
 end
 
 def show
-  @category = Category.find_by(params[:id])
+  @category = Category.find(params[:id])
 end
 
 def new
@@ -37,3 +36,8 @@ def update
   end
 end
 
+private
+def category_params
+  params.require(:category).permit(:name, :description) 
+end
+end

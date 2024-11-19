@@ -15,9 +15,19 @@
     <link rel="apple-touch-icon" href="/icon.png">
     <%= stylesheet_link_tag "application", "data-turbo-track": "reload" %>
     <%= javascript_importmap_tags %>
+    <script src="https://js.stripe.com/v3/"></script>
   </head>
 
+
   <body>
-    <%= yield %>
-  </body>
+  <!-- 
+    <% if controller_name == "donations" && (action_name == "new" || action_name == "create") %>
+      <%= javascript_include_tag "donation", type: "module" %>
+    <% end %>
+  -->
+  <%= yield %>
+  <%= yield :javascript %>
+</body>
+
+
 </html>
