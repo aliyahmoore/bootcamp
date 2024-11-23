@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.2].define(version: 2024_11_22_235651) do
+ActiveRecord::Schema[7.2].define(version: 2024_11_23_025101) do
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
 
@@ -20,6 +20,8 @@ ActiveRecord::Schema[7.2].define(version: 2024_11_22_235651) do
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.bigint "category_id"
+    t.bigint "author_id"
+    t.index ["author_id"], name: "index_articles_on_author_id"
     t.index ["category_id"], name: "index_articles_on_category_id"
   end
 
@@ -68,6 +70,7 @@ ActiveRecord::Schema[7.2].define(version: 2024_11_22_235651) do
     t.index ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true
   end
 
+  add_foreign_key "articles", "authors"
   add_foreign_key "articles", "categories"
   add_foreign_key "comments", "articles"
 end
