@@ -1,24 +1,23 @@
 Rails.application.routes.draw do
-  get "donations/new"
-  get "donations/create"
+  # Root route
   root "articles#index"
-  resources :articles
-  # Define your application routes per the DSL in https://guides.rubyonrails.org/routing.html
+  #root "category#index"
 
-  # Reveal health status on /up that returns 200 if the app boots with no exceptions, otherwise 500.
-  # Can be used by load balancers and uptime monitors to verify that the app is live.
-  get "up" => "rails/health#show", as: :rails_health_check
-
-  # Render dynamic PWA files from app/views/pwa/*
-  get "service-worker" => "rails/pwa#service_worker", as: :pwa_service_worker
-  get "manifest" => "rails/pwa#manifest", as: :pwa_manifest
-
-  resources :categories, only: [ :create, :new, :show, :edit, :update, :destroy ]
-
+  # Categories routes
+  resources :categories
+  
+  # Articles routes
   resources :articles do
-    resources :comments
+    resources :comments, only: [:create, :destroy]
   end
 
-  resources :donations, only: [:new, :create] 
+  # Donations routes
+  resources :donations, only: [:new, :create]
 
+  # Health check route
+  get "up", to: "rails/health#show", as: :rails_health_check
+
+  # PWA-related routes
+  get "service-worker", to: "rails/pwa#service_worker", as: :pwa_service_worker
+  get "manifest", to: "rails/pwa#manifest", as: :pwa_manifest
 end

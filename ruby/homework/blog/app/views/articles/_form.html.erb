@@ -1,4 +1,6 @@
-<%= form_with model: article do |form| %>
+<h1>New Article</h1>
+
+<%= form_with model: @article do |form| %>
   <div>
     <%= form.label :title %><br>
     <%= form.text_field :title %>
@@ -9,7 +11,7 @@
 
   <div>
     <%= form.label :body %><br>
-    <%= form.text_area :body %><br>
+    <%= form.text_area :body %>
     <% article.errors.full_messages_for(:body).each do |message| %>
       <div><%= message %></div>
     <% end %>
@@ -17,11 +19,12 @@
 
   <div>
     <%= form.label :category_id, "Category" %>
-    <%= form.collection_select :category_id, Category.all, :id, :name %>
+    <%= form.collection_select :category_id, Category.all, :id, :name, { prompt: "Select a category" } %>
   </div>
 
   <div>
     <%= form.submit %>
   </div>
+  
 <% end %>
 

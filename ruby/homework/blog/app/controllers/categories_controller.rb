@@ -19,7 +19,7 @@ def create
   if @category.save
     redirect_to @category
   else
-    render :new
+    render :new, status: :unprocessable_entity
   end
 end
 
@@ -32,7 +32,7 @@ def update
   if @category.update(category_params)
     redirect_to @category
   else
-    render :edit
+    render :edit, status: :unprocessable_entity
   end
 end
 

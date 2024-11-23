@@ -1,0 +1,20 @@
+<% content_for :javascript do %>
+  <script type="module">
+  import "donation";
+  </script>
+  <%end%>
+
+<script src="https://js.stripe.com/v3/"></script>
+
+<h1>Support Our Blog</h1>
+<%= form_with url: donations_path, method: :post, local: true, id: "payment-form" do |form| %>
+  <%= form.hidden_field :csrf_token, value: form_authenticity_token %>
+
+  <label for="amount">Donation Amount:</label>
+  <input type="number" name="amount" min="1" required />
+
+  <label for="card-element">Credit or Debit Card:</label>
+  <div id="card-element"><!-- Stripe will place the card input here --></div>
+
+  <button type="submit">Donate</button>
+<% end %>

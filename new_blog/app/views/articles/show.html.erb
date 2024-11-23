@@ -1,0 +1,20 @@
+<h1><%= @article.title %></h1>
+
+<p><%= @article.body %></p>
+
+<ul>
+  <li><%= link_to "Edit", edit_article_path(@article) %></li>
+  <li> <%= button_to "Delete", @article, redirect_to: @articles, method: :delete%></li>
+</ul>
+
+<h2>Comments</h2>
+<%= render @article.comments %>
+
+<h2>Add a comment:</h2>
+<%= render "comments/form", article: @article %>
+
+<% content_for :javascript do %>
+  <script type="module">
+    import "article";  <!-- This will import the JavaScript file from controllers -->
+  </script>
+<% end %>
