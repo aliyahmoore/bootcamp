@@ -13,8 +13,19 @@
   <label for="amount">Donation Amount:</label>
   <input type="number" name="amount" min="1" required />
 
+  <div>
+    <input type="checkbox" name="recurring" id="recurring" value="1" />
+    <label for="recurring">Make this a monthly donation.</label>
+  </div>
+
+  <div id="recurring-description" style="display: none;">
+    <p>Your card will be charged monthly.</p>
+  </div>
+
+<div id="card-container">
   <label for="card-element">Credit or Debit Card:</label>
   <div id="card-element"><!-- Stripe will place the card input here --></div>
-
+</div>
+  
   <button type="submit">Donate</button>
 <% end %>

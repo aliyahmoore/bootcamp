@@ -1,0 +1,49 @@
+h1 {
+  text-align: center;
+  color: #0c69ff;
+  margin-top: 30px;
+}
+
+#payment-form {
+    max-width: 400px;
+    margin: 30px auto;
+    background: white;
+    padding: 20px;
+    border-radius: 8px;
+}
+
+label {
+  display: block;
+  margin: 10px 0 5px;
+  color: #0561ff;
+}
+
+input[type="number"] {
+  width: 100%;
+  padding: 10px;
+  margin-bottom: 15px;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+}
+
+#card-container {
+  margin-bottom: 15px;
+  padding: 10px;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+  background-color: #f9f9f9;
+}
+
+button {
+  background-color: #f0a746; 
+  color: white;
+  font-size: 16px;
+  padding: 4px 10px; 
+  border: none; 
+  border-radius: 4px;
+}
+
+
+button:hover {
+  background-color: #f29436;
+}

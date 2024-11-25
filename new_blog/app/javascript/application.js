@@ -2,3 +2,4 @@
 import "@hotwired/turbo-rails"
 import "controllers"
 import {loadStripe} from '@stripe/stripe-js';
+import “./add_jquery”;
